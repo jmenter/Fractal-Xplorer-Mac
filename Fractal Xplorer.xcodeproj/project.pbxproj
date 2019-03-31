@@ -1,0 +1,392 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		63188A601F709E3D00396C13 /* HSVAtoARGB.cl in Sources */ = {isa = PBXBuildFile; fileRef = 63188A5F1F709E3D00396C13 /* HSVAtoARGB.cl */; };
+		63188A621F709EBB00396C13 /* Colorization.cl in Sources */ = {isa = PBXBuildFile; fileRef = 63188A611F709EBB00396C13 /* Colorization.cl */; };
+		63188A651F70B35000396C13 /* CGUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = 63188A641F70B35000396C13 /* CGUtilities.c */; };
+		63188A681F70BE8300396C13 /* FractalConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 63188A671F70BE8300396C13 /* FractalConfiguration.m */; };
+		63FFD34F1F6D97C80067AE0D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FFD34E1F6D97C80067AE0D /* AppDelegate.m */; };
+		63FFD3521F6D97C80067AE0D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FFD3511F6D97C80067AE0D /* ViewController.m */; };
+		63FFD3541F6D97C80067AE0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63FFD3531F6D97C80067AE0D /* Assets.xcassets */; };
+		63FFD3571F6D97C80067AE0D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FFD3551F6D97C80067AE0D /* Main.storyboard */; };
+		63FFD35A1F6D97C80067AE0D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FFD3591F6D97C80067AE0D /* main.m */; };
+		63FFD3631F6D98510067AE0D /* FractalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FFD3621F6D98510067AE0D /* FractalView.m */; };
+		63FFD3691F6DA0DF0067AE0D /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63FFD3681F6DA0DF0067AE0D /* OpenCL.framework */; };
+		63FFD36C1F6DA0EB0067AE0D /* Fractal.cl in Sources */ = {isa = PBXBuildFile; fileRef = 63FFD36A1F6DA0EB0067AE0D /* Fractal.cl */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		63188A5F1F709E3D00396C13 /* HSVAtoARGB.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = HSVAtoARGB.cl; sourceTree = "<group>"; };
+		63188A611F709EBB00396C13 /* Colorization.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = Colorization.cl; sourceTree = "<group>"; };
+		63188A631F70B35000396C13 /* CGUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CGUtilities.h; sourceTree = "<group>"; };
+		63188A641F70B35000396C13 /* CGUtilities.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CGUtilities.c; sourceTree = "<group>"; };
+		63188A661F70BE8300396C13 /* FractalConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FractalConfiguration.h; sourceTree = "<group>"; };
+		63188A671F70BE8300396C13 /* FractalConfiguration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FractalConfiguration.m; sourceTree = "<group>"; };
+		63FFD34A1F6D97C80067AE0D /* Fractal Xplorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fractal Xplorer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		63FFD34D1F6D97C80067AE0D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		63FFD34E1F6D97C80067AE0D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		63FFD3501F6D97C80067AE0D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		63FFD3511F6D97C80067AE0D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		63FFD3531F6D97C80067AE0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63FFD3561F6D97C80067AE0D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		63FFD3581F6D97C80067AE0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63FFD3591F6D97C80067AE0D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		63FFD35B1F6D97C80067AE0D /* Fractal_Xplorer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fractal_Xplorer.entitlements; sourceTree = "<group>"; };
+		63FFD3611F6D98510067AE0D /* FractalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FractalView.h; sourceTree = "<group>"; };
+		63FFD3621F6D98510067AE0D /* FractalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FractalView.m; sourceTree = "<group>"; };
+		63FFD3681F6DA0DF0067AE0D /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		63FFD36A1F6DA0EB0067AE0D /* Fractal.cl */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.opencl; path = Fractal.cl; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63FFD3471F6D97C80067AE0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63FFD3691F6DA0DF0067AE0D /* OpenCL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		63FFD3411F6D97C80067AE0D = {
+			isa = PBXGroup;
+			children = (
+				63FFD34C1F6D97C80067AE0D /* Fractal Xplorer */,
+				63FFD34B1F6D97C80067AE0D /* Products */,
+				63FFD3671F6DA0DF0067AE0D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		63FFD34B1F6D97C80067AE0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63FFD34A1F6D97C80067AE0D /* Fractal Xplorer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63FFD34C1F6D97C80067AE0D /* Fractal Xplorer */ = {
+			isa = PBXGroup;
+			children = (
+				63FFD3721F6DB3E40067AE0D /* OpenCL Kernels */,
+				63FFD3711F6DB3D80067AE0D /* FractalViews */,
+				63FFD34D1F6D97C80067AE0D /* AppDelegate.h */,
+				63FFD34E1F6D97C80067AE0D /* AppDelegate.m */,
+				63188A631F70B35000396C13 /* CGUtilities.h */,
+				63188A641F70B35000396C13 /* CGUtilities.c */,
+				63188A661F70BE8300396C13 /* FractalConfiguration.h */,
+				63188A671F70BE8300396C13 /* FractalConfiguration.m */,
+				63FFD3501F6D97C80067AE0D /* ViewController.h */,
+				63FFD3511F6D97C80067AE0D /* ViewController.m */,
+				63FFD3531F6D97C80067AE0D /* Assets.xcassets */,
+				63FFD3551F6D97C80067AE0D /* Main.storyboard */,
+				63FFD3581F6D97C80067AE0D /* Info.plist */,
+				63FFD3591F6D97C80067AE0D /* main.m */,
+				63FFD35B1F6D97C80067AE0D /* Fractal_Xplorer.entitlements */,
+			);
+			path = "Fractal Xplorer";
+			sourceTree = "<group>";
+		};
+		63FFD3671F6DA0DF0067AE0D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63FFD3681F6DA0DF0067AE0D /* OpenCL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		63FFD3711F6DB3D80067AE0D /* FractalViews */ = {
+			isa = PBXGroup;
+			children = (
+				63FFD3611F6D98510067AE0D /* FractalView.h */,
+				63FFD3621F6D98510067AE0D /* FractalView.m */,
+			);
+			path = FractalViews;
+			sourceTree = "<group>";
+		};
+		63FFD3721F6DB3E40067AE0D /* OpenCL Kernels */ = {
+			isa = PBXGroup;
+			children = (
+				63FFD36A1F6DA0EB0067AE0D /* Fractal.cl */,
+				63188A5F1F709E3D00396C13 /* HSVAtoARGB.cl */,
+				63188A611F709EBB00396C13 /* Colorization.cl */,
+			);
+			path = "OpenCL Kernels";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63FFD3491F6D97C80067AE0D /* Fractal Xplorer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63FFD35E1F6D97C80067AE0D /* Build configuration list for PBXNativeTarget "Fractal Xplorer" */;
+			buildPhases = (
+				63FFD3461F6D97C80067AE0D /* Sources */,
+				63FFD3471F6D97C80067AE0D /* Frameworks */,
+				63FFD3481F6D97C80067AE0D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Fractal Xplorer";
+			productName = "Fractal Xplorer";
+			productReference = 63FFD34A1F6D97C80067AE0D /* Fractal Xplorer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63FFD3421F6D97C80067AE0D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Jeff Menter";
+				TargetAttributes = {
+					63FFD3491F6D97C80067AE0D = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 63FFD3451F6D97C80067AE0D /* Build configuration list for PBXProject "Fractal Xplorer" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63FFD3411F6D97C80067AE0D;
+			productRefGroup = 63FFD34B1F6D97C80067AE0D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63FFD3491F6D97C80067AE0D /* Fractal Xplorer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63FFD3481F6D97C80067AE0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63FFD3541F6D97C80067AE0D /* Assets.xcassets in Resources */,
+				63FFD3571F6D97C80067AE0D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63FFD3461F6D97C80067AE0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63188A651F70B35000396C13 /* CGUtilities.c in Sources */,
+				63FFD3631F6D98510067AE0D /* FractalView.m in Sources */,
+				63188A681F70BE8300396C13 /* FractalConfiguration.m in Sources */,
+				63FFD36C1F6DA0EB0067AE0D /* Fractal.cl in Sources */,
+				63FFD3521F6D97C80067AE0D /* ViewController.m in Sources */,
+				63188A621F709EBB00396C13 /* Colorization.cl in Sources */,
+				63FFD35A1F6D97C80067AE0D /* main.m in Sources */,
+				63188A601F709E3D00396C13 /* HSVAtoARGB.cl in Sources */,
+				63FFD34F1F6D97C80067AE0D /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		63FFD3551F6D97C80067AE0D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				63FFD3561F6D97C80067AE0D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		63FFD35C1F6D97C80067AE0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		63FFD35D1F6D97C80067AE0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		63FFD35F1F6D97C80067AE0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Fractal Xplorer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OPENCL_COMPILER_VERSION = CL1.2;
+				OPENCL_FAST_RELAXED_MATH = YES;
+				OPENCL_MAD_ENABLE = YES;
+				OPENCL_OPTIMIZATION_LEVEL = 3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jeffmenter.Fractal-Xplorer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		63FFD3601F6D97C80067AE0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = "Fractal Xplorer/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				OPENCL_COMPILER_VERSION = CL1.2;
+				OPENCL_FAST_RELAXED_MATH = YES;
+				OPENCL_MAD_ENABLE = YES;
+				OPENCL_OPTIMIZATION_LEVEL = 3;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jeffmenter.Fractal-Xplorer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63FFD3451F6D97C80067AE0D /* Build configuration list for PBXProject "Fractal Xplorer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63FFD35C1F6D97C80067AE0D /* Debug */,
+				63FFD35D1F6D97C80067AE0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63FFD35E1F6D97C80067AE0D /* Build configuration list for PBXNativeTarget "Fractal Xplorer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63FFD35F1F6D97C80067AE0D /* Debug */,
+				63FFD3601F6D97C80067AE0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63FFD3421F6D97C80067AE0D /* Project object */;
+}
