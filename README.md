@@ -8,4 +8,4 @@ Uses OpenCL and your Mac's GPU to do the calculations if possible (fallback to C
 Take a look at Fractal.cl, there are a few different colorization options. Some use the orbit count for added zaniness.
 
 Example:
-![example image](https://raw.githubusercontent.com/jmenter/Fractal-Xplorer-Mac/master/example.png "example")
+![example image](https://raw.githubusercontent.com/jmenter/Fractal-Xplorer-Mac/develop/example.png "example")
