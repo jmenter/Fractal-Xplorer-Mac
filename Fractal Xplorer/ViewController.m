@@ -7,13 +7,40 @@
 @property (nonatomic) IBOutlet FractalView *juliaView;
 @property (weak) IBOutlet NSTextField *mandelbrotLabel;
 @property (weak) IBOutlet NSTextField *juliaLabel;
+@property (weak) IBOutlet NSPopUpButton *colorizationPopUp;
+@property (weak) IBOutlet NSPopUpButton *devicePopUp;
 @end
 
 @implementation ViewController
+
+- (void)viewWillAppear;
+{
+    [super viewWillAppear];
+    [self.devicePopUp removeAllItems];
+    [self.devicePopUp addItemsWithTitles:self.mandlView.availableDeviceNames];
+}
+
 - (IBAction)sliderSlid:(id)sender;
 {
     self.mandlView.orbitCount = [sender floatValue];
     self.juliaView.orbitCount = [sender floatValue];
+    [self.mandlView layout];
+    [self.juliaView layout];
+}
+
+- (IBAction)devicePopUpChanged:(NSPopUpButton *)sender
+{
+    [self.mandlView selectDeviceAtIndex:sender.indexOfSelectedItem];
+    [self.juliaView selectDeviceAtIndex:sender.indexOfSelectedItem];
+
+    [self.mandlView layout];
+    [self.juliaView layout];
+}
+
+- (IBAction)colorizationPopUpChanged:(NSPopUpButton *)sender;
+{
+    self.mandlView.colorizationOption = sender.indexOfSelectedItem;
+    self.juliaView.colorizationOption = sender.indexOfSelectedItem;
     [self.mandlView layout];
     [self.juliaView layout];
 }

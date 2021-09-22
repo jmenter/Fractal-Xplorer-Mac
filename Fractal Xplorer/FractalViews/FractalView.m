@@ -15,26 +15,15 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
 - (instancetype)initWithCoder:(NSCoder *)coder;
 {
     if (!(self = [super initWithCoder:coder])) { return nil; }
-    self.preferredDeviceType = CL_DEVICE_TYPE_GPU;
-    [self createRenderQueue];
+    [self selectDeviceAtIndex:0];
     if (!self.renderQueue) { return nil; }
     
     [self configureTrackingArea];
     self.fractalConfiguration = FractalConfiguration.new;
     self.fractalConfiguration.delegate = self;
+    
+    [self collectDevices];
     return self;
-}
-
-- (void)createRenderQueue;
-{
-    self.renderQueue = gcl_create_dispatch_queue(self.preferredDeviceType, NULL);
-}
-
-- (void)setPreferredDeviceType:(cl_device_type)preferredDeviceType;
-{
-    if (_preferredDeviceType == preferredDeviceType) { return; }
-    _preferredDeviceType = preferredDeviceType;
-    [self createRenderQueue];
 }
 
 - (CGFloatComplex)complexForPoint:(CGPoint)point;
@@ -93,7 +82,7 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
         void *clMemory = gcl_malloc(sizeof(UInt32) * pixelCount, NULL, CL_MEM_WRITE_ONLY);
 
         fractal_kernel(&range, clMemory, (int)self.fractalConfiguration.maximumIterations,
-                      self.realSpan, self.imaginarySpan, size, (int)self.juliaMode, self.orbitCount);
+                      self.realSpan, self.imaginarySpan, size, (int)self.juliaMode, self.orbitCount, (int)self.colorizationOption);
 
         gcl_memcpy(imagePixelData, clMemory, sizeof(UInt32) * pixelCount);
         gcl_free(clMemory);
@@ -189,4 +178,60 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
             (float)self.fractalConfiguration.complex.imaginary,
               (int)self.fractalConfiguration.maximumIterations, (float)self.lastFrameTime];
 }
+
+- (void)collectDevices;
+{
+    char* value;
+    size_t valueSize;
+    cl_uint platformCount;
+    cl_platform_id* platforms;
+    cl_uint deviceCount;
+    cl_device_id* devices;
+
+    // get all platforms
+    clGetPlatformIDs(0, NULL, &platformCount);
+    platforms = (cl_platform_id*) malloc(sizeof(cl_platform_id) * platformCount);
+    clGetPlatformIDs(platformCount, platforms, NULL);
+
+    // get all devices for platform 0
+    clGetDeviceIDs(platforms[0], CL_DEVICE_TYPE_ALL, 0, NULL, &deviceCount);
+    devices = (cl_device_id*) malloc(sizeof(cl_device_id) * deviceCount);
+    clGetDeviceIDs(platforms[0], CL_DEVICE_TYPE_ALL, deviceCount, devices, NULL);
+
+    NSMutableArray *deviceNames = NSMutableArray.new;
+    
+    for (int i = 0; i < deviceCount; i++) {
+
+        // print device name
+        clGetDeviceInfo(devices[i], CL_DEVICE_NAME, 0, NULL, &valueSize);
+        value = (char*) malloc(valueSize);
+        clGetDeviceInfo(devices[i], CL_DEVICE_NAME, valueSize, value, NULL);
+        NSString *deviceName = [NSString stringWithUTF8String:value];
+        [deviceNames addObject:deviceName ?: @"no name"];
+        free(value);
+    }
+    self.availableDeviceNames = deviceNames.copy;
+}
+
+- (void)selectDeviceAtIndex:(NSUInteger)index;
+{
+    cl_uint platformCount;
+    cl_platform_id* platforms;
+    cl_uint deviceCount;
+    cl_device_id* devices;
+
+    // get all platforms
+    clGetPlatformIDs(0, NULL, &platformCount);
+    platforms = (cl_platform_id*) malloc(sizeof(cl_platform_id) * platformCount);
+    clGetPlatformIDs(platformCount, platforms, NULL);
+
+    // get all devices for platform 0
+    clGetDeviceIDs(platforms[0], CL_DEVICE_TYPE_ALL, 0, NULL, &deviceCount);
+    devices = (cl_device_id*) malloc(sizeof(cl_device_id) * deviceCount);
+    clGetDeviceIDs(platforms[0], CL_DEVICE_TYPE_ALL, deviceCount, devices, NULL);
+    
+    cl_device_id selected = devices[index];
+    self.renderQueue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_USE_ID, selected);
+}
+
 @end

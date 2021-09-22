@@ -10,11 +10,15 @@
 @interface FractalView : NSView <FractalConfigurationChangeDelegate>
 
 @property (nonatomic) dispatch_queue_t renderQueue;
-@property (nonatomic) cl_device_type preferredDeviceType;
 @property (nonatomic, weak) IBOutlet id<MouseEventDelegate> mouseEventDelegate;
 @property (nonatomic) FractalConfiguration *fractalConfiguration;
 @property (nonatomic) IBInspectable BOOL juliaMode;
 @property (nonatomic) float orbitCount;
+@property (nonatomic) NSUInteger colorizationOption;
+
+@property (nonatomic) NSArray <NSString *> *availableDeviceNames;
+
+- (void)selectDeviceAtIndex:(NSUInteger)index;
 
 - (CGSize)viewSizeInPixels;
 - (cl_float2)realSpan;

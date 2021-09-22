@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -702,16 +702,16 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Mouse Event Delegate-->
+        <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="693" height="394"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Z01-qI-Jng" customClass="FractalView">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="270"/>
+                                <rect key="frame" x="0.0" y="0.0" width="347" height="394"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="juliaMode" value="NO"/>
                                 </userDefinedRuntimeAttributes>
@@ -720,7 +720,7 @@
                                 </connections>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="53g-LT-psK" customClass="FractalView">
-                                <rect key="frame" x="240" y="0.0" width="240" height="270"/>
+                                <rect key="frame" x="347" y="0.0" width="346" height="394"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="juliaMode" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -729,7 +729,7 @@
                                 </connections>
                             </customView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lnx-te-E2N">
-                                <rect key="frame" x="238" y="170" width="244" height="100"/>
+                                <rect key="frame" x="345" y="294" width="350" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Zf0-BV-ggP"/>
                                 </constraints>
@@ -740,7 +740,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Q6R-c4-hww">
-                                <rect key="frame" x="-2" y="170" width="244" height="100"/>
+                                <rect key="frame" x="-2" y="294" width="351" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="HJf-Uk-WRC"/>
                                 </constraints>
@@ -758,6 +758,43 @@
                                     <action selector="sliderSlid:" target="XfG-lQ-9wD" id="20V-6S-YIe"/>
                                 </connections>
                             </slider>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97d-Qg-lGz">
+                                <rect key="frame" x="32" y="16" width="311" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Rainboo?" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TSk-D3-Jet" id="MOm-zB-9Nq">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="aw5-tc-ewp">
+                                        <items>
+                                            <menuItem title="Rainboo?" state="on" id="TSk-D3-Jet"/>
+                                            <menuItem title="Fancy Zebra" id="Kqc-OM-KKZ"/>
+                                            <menuItem title="Dark Bloo" id="sSK-Ph-lZA"/>
+                                            <menuItem title="Basic" id="12t-1P-LA6"/>
+                                            <menuItem title="Rainbow Vomit" id="be6-4L-5zc"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="colorizationPopUpChanged:" target="XfG-lQ-9wD" id="qDP-pQ-97q"/>
+                                </connections>
+                            </popUpButton>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acn-uL-y46">
+                                <rect key="frame" x="32" y="44" width="311" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="GPU" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="vpT-mU-k9K" id="NjO-PK-KxF">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="U52-Ad-JKV">
+                                        <items>
+                                            <menuItem title="GPU" state="on" id="vpT-mU-k9K" userLabel="GPU"/>
+                                            <menuItem title="CPU" id="pBJ-eJ-lLg" userLabel="CPU"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="devicePopUpChanged:" target="XfG-lQ-9wD" id="8cU-wI-yL5"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="lnx-te-E2N" firstAttribute="trailing" secondItem="53g-LT-psK" secondAttribute="trailing" id="07t-Xk-gQT"/>
@@ -777,6 +814,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="colorizationPopUp" destination="97d-Qg-lGz" id="Bq6-EU-JPw"/>
+                        <outlet property="devicePopUp" destination="acn-uL-y46" id="ZyB-bV-teF"/>
                         <outlet property="juliaLabel" destination="lnx-te-E2N" id="peT-bI-Eo3"/>
                         <outlet property="juliaView" destination="53g-LT-psK" id="lWw-2K-WiW"/>
                         <outlet property="mandelbrotLabel" destination="Q6R-c4-hww" id="HCa-NN-f8h"/>
@@ -785,7 +824,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="181.5" y="717"/>
         </scene>
     </scenes>
 </document>
