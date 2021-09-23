@@ -10,5 +10,7 @@ Explore Mandelbrot and Julia fractals with OpenCL from the comfort of your Mac
 
 Take a look at Fractal.cl, there are a few different colorization options. Some use the orbit count for added zaniness.
 
+Also, there's a build you can download and run (you might have to allow it to run un-codesigned)
+
 Example:
 ![example image](https://raw.githubusercontent.com/jmenter/Fractal-Xplorer-Mac/develop/example.png "example")
