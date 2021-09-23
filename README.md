@@ -1,7 +1,7 @@
 # Fractal-Xplorer-Mac
 Explore Mandelbrot and Julia fractals with OpenCL from the comfort of your Mac
 
-* Choose which OpenCL device to use from the popup (hint: your GPU will likely be way faster than your CPU)
+* Choose which OpenCL device to use from the popup (hint: your GPU will likely be way faster than your CPU. For example, my 13" MacBook Air (2020)'s Intel Iris Plus is ~30x faster than its Core i5)
 * Choose a colorization method from the other popup.
 * Drag the slider to affect orbital values for some colorization methods.
 * Drag and zoom both the Mandelbrot Set and corresponding Julia Set with click/drag/scroll wheel.
