@@ -45,14 +45,15 @@
     [self.juliaView layout];
 }
 
+// process mouse events from either view because those events could affect the configuration of the other view
 - (void)mouseEvent:(NSEvent *)event view:(NSView *)view;
 {
     static CGPoint previousMousePosition;
+    CGPoint delta = CGPointMake(event.locationInWindow.x - previousMousePosition.x, event.locationInWindow.y - previousMousePosition.y);
     if (event.type == NSEventTypeScrollWheel) {
         FractalView *fractalView = (FractalView *)view;
         fractalView.fractalConfiguration.scale *= 1 + (event.deltaY / 10);
     }
-    CGPoint delta = CGPointMake(event.locationInWindow.x - previousMousePosition.x, event.locationInWindow.y - previousMousePosition.y);
     if (view == self.juliaView && (event.modifierFlags & NSEventModifierFlagCommand)) {
         CGPoint converted = CGPointMake(event.locationInWindow.x - self.mandlView.bounds.size.width, event.locationInWindow.y);
         self.mandlView.fractalConfiguration.complex = [self.juliaView complexForPoint:converted];
@@ -63,7 +64,6 @@
         self.juliaView.fractalConfiguration.complex = [self.mandlView complexForPoint:event.locationInWindow];
    } else
     if (event.type == NSEventTypeRightMouseDragged) {
-        CGPoint delta = CGPointMake(event.locationInWindow.x - previousMousePosition.x, event.locationInWindow.y - previousMousePosition.y);
         if ([view isKindOfClass:FractalView.class]) {
             ((FractalView *)view).fractalConfiguration.scale *= 1 + (delta.y / 100);
         }
