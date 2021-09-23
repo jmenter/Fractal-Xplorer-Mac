@@ -224,6 +224,8 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
         free(value);
     }
     self.availableDeviceNames = deviceNames.copy;
+    free(platforms);
+    free(devices);
 }
 
 - (void)selectDeviceAtIndex:(NSUInteger)index;
@@ -244,6 +246,8 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
     
     cl_device_id selected = devices[index];
     self.renderQueue = gcl_create_dispatch_queue(CL_DEVICE_TYPE_USE_ID, selected);
+    free(platforms);
+    free(devices);
 }
 
 @end

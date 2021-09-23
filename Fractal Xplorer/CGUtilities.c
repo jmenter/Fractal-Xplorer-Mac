@@ -22,7 +22,7 @@ CGSize CGSizeScale(CGSize size, CGFloat scale)
 CGContextRef CGBitmapContext32BitCreate(CGSize actualSize)
 {
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef imageContext = CGBitmapContextCreate(NULL, actualSize.width, actualSize.height, 8, actualSize.width * 4, colorSpace, (CGBitmapInfo)kCGImageAlphaPremultipliedFirst);
+    CGContextRef imageContext = CGBitmapContextCreate(NULL, actualSize.width, actualSize.height, 8, actualSize.width * 4, colorSpace, (CGBitmapInfo)kCGImageAlphaNoneSkipFirst);
     CGColorSpaceRelease(colorSpace);
     return imageContext;
 }
