@@ -5,6 +5,7 @@
 
 @interface FractalView ()
 @property (nonatomic) NSTimeInterval lastFrameTime;
+@property (nonatomic) NSMutableArray <NSNumber *> *renderTimes;
 @end
 
 @implementation FractalView
@@ -17,7 +18,8 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
     if (!(self = [super initWithCoder:coder])) { return nil; }
     [self selectDeviceAtIndex:0];
     if (!self.renderQueue) { return nil; }
-    
+    self.renderTimes = NSMutableArray.new;
+
     [self configureTrackingArea];
     self.fractalConfiguration = FractalConfiguration.new;
     self.fractalConfiguration.delegate = self;
@@ -73,9 +75,11 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
     size_t pixelCount = self.viewSizeInPixels.width * self.viewSizeInPixels.height;
     CGContextRef imageContext = CGBitmapContext32BitCreate(self.viewSizeInPixels);
     UInt32 *imagePixelData = CGBitmapContextGetData(imageContext);
-    cl_ndrange range = (cl_ndrange){ 2, {0, 0, 0},
-        {(size_t)self.viewSizeInPixels.width, (size_t)self.viewSizeInPixels.height, 0},
-        {(size_t)NULL, (size_t)NULL, 0} };
+    cl_ndrange range = (cl_ndrange){ 2, // work_dim
+        {0, 0, 0}, // global_work_offset
+        {(size_t)self.viewSizeInPixels.width, (size_t)self.viewSizeInPixels.height, 0}, // global_work_size
+        {(size_t)NULL, (size_t)NULL, 0} // local_work_size
+    };
 
     dispatch_sync(self.renderQueue, ^{
         cl_float2 size = (cl_float2){self.fractalConfiguration.complex.real, self.fractalConfiguration.complex.imaginary};
@@ -124,7 +128,7 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
 
 - (void)mouseMoved:(NSEvent *)theEvent
 {
-    if (theEvent.modifierFlags & NSEventModifierFlagCommand ) {
+    if (theEvent.modifierFlags & NSEventModifierFlagCommand) {
         [NSCursor.crosshairCursor push];
     } else {
         [NSCursor.openHandCursor push];
@@ -171,12 +175,21 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
 
 - (NSString *)labelText;
 {
-    return [NSString stringWithFormat:@"real: %f • %f\nimaginary: %f • %f\ncomplex: %fr, %fi\n%i iterations • time: %0.3f",
+    [self.renderTimes addObject:@(self.lastFrameTime)];
+    if (self.renderTimes.count > 10) {
+        [self.renderTimes removeObjectAtIndex:0];
+    }
+    __block NSTimeInterval average = 0.f;
+    [self.renderTimes enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        average += obj.doubleValue;
+    }];
+    average = average / (double)self.renderTimes.count;
+    return [NSString stringWithFormat:@"real: %f • %f\nimaginary: %f • %f\ncomplex: %fr, %fi\n%i iterations\nrender time: %0.1fms, average: %0.1fms",
             (float)self.realSpan.lo, (float)self.realSpan.hi,
             (float)self.imaginarySpan.lo, (float)self.imaginarySpan.hi,
             (float)self.fractalConfiguration.complex.real,
             (float)self.fractalConfiguration.complex.imaginary,
-              (int)self.fractalConfiguration.maximumIterations, (float)self.lastFrameTime];
+              (int)self.fractalConfiguration.maximumIterations, (float)self.lastFrameTime * 1000.f, average * 1000.f];
 }
 
 - (void)collectDevices;
@@ -207,7 +220,7 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
         value = (char*) malloc(valueSize);
         clGetDeviceInfo(devices[i], CL_DEVICE_NAME, valueSize, value, NULL);
         NSString *deviceName = [NSString stringWithUTF8String:value];
-        [deviceNames addObject:deviceName ?: @"no name"];
+        [deviceNames addObject:deviceName ?: @"(no device name)"];
         free(value);
     }
     self.availableDeviceNames = deviceNames.copy;
@@ -220,7 +233,6 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
     cl_uint deviceCount;
     cl_device_id* devices;
 
-    // get all platforms
     clGetPlatformIDs(0, NULL, &platformCount);
     platforms = (cl_platform_id*) malloc(sizeof(cl_platform_id) * platformCount);
     clGetPlatformIDs(platformCount, platforms, NULL);

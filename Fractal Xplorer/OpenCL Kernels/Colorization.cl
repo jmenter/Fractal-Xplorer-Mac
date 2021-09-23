@@ -11,7 +11,7 @@ uint argbFloatToUInt(float4 argb)
 
 float4 colorizeStripey(float2 z, float2 z2, int iterationCount, int maximumIterations)
 {
-    float4 hsva = (float4)(0, 0, 0, 1);
+    float4 hsva = (float4)(0.f, 0.f, 0.f, 1.f);
     if (iterationCount == maximumIterations) {
         float factor = 2 - (z2.x + z2.y);
         hsva.x = (z2.x * 2.f);

@@ -339,10 +339,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				OPENCL_COMPILER_VERSION = CL1.2;
-				OPENCL_FAST_RELAXED_MATH = YES;
-				OPENCL_MAD_ENABLE = YES;
-				OPENCL_OPTIMIZATION_LEVEL = 3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jeffmenter.Fractal-Xplorer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -362,10 +358,6 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				OPENCL_COMPILER_VERSION = CL1.2;
-				OPENCL_FAST_RELAXED_MATH = YES;
-				OPENCL_MAD_ENABLE = YES;
-				OPENCL_OPTIMIZATION_LEVEL = 3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jeffmenter.Fractal-Xplorer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

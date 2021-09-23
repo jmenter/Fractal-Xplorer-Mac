@@ -84,6 +84,12 @@
     [self configureLabels];
 }
 
+- (void)viewWillLayout;
+{
+    [super viewWillLayout];
+    [self configureLabels];
+}
+
 -(void)configureLabels;
 {
     self.mandelbrotLabel.stringValue = self.mandlView.labelText;

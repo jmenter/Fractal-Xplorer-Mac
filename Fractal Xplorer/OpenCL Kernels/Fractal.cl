@@ -48,6 +48,10 @@ __kernel void fractal( __global uint * output, uint maximumIterations,
             argb = colorizeNew(z, z2, iterationCount, maximumIterations);
         }
         break;
+        case 5: {
+            argb = colorizeNewer(z, iterationCount, maximumIterations);
+        }
+        break;
         case 0:
         default: {
             argb = colorizeBlackAndWhite(orbitCount, altOrbitCount, iterationCount, maximumIterations);
