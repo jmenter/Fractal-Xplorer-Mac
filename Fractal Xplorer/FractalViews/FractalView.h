@@ -3,6 +3,14 @@
 #import <OpenCL/OpenCL.h>
 #import "FractalConfiguration.h"
 
+struct
+CGIntegerSize {
+    NSInteger width;
+    NSInteger height;
+};
+typedef struct CG_BOXABLE CGIntegerSize CGIntegerSize;
+
+
 @protocol MouseEventDelegate <NSObject>
 - (void)mouseEvent:(NSEvent *)event view:(NSView *)view;
 @end
@@ -16,11 +24,15 @@
 @property (nonatomic) float orbitCount;
 @property (nonatomic) NSUInteger colorizationOption;
 
+/** scaling modifier */
+@property (nonatomic) CGFloat renderingScale;
+
 @property (nonatomic) NSArray <NSString *> *availableDeviceNames;
 
 - (void)selectDeviceAtIndex:(NSUInteger)index;
 
-- (CGSize)viewSizeInPixels;
+
+- (CGIntegerSize)viewSizeInPixels;
 - (cl_float2)realSpan;
 - (cl_float2)imaginarySpan;
 

@@ -10,12 +10,12 @@
 
 @implementation FractalView
 
-static const CGFloat kAntiAliasingMultiplier = 1.f;
 static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals 200 screen points.
 
 - (instancetype)initWithCoder:(NSCoder *)coder;
 {
     if (!(self = [super initWithCoder:coder])) { return nil; }
+    self.renderingScale = 0.5;
     [self selectDeviceAtIndex:0];
     if (!self.renderQueue) { return nil; }
     self.renderTimes = NSMutableArray.new;
@@ -64,16 +64,20 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
     [self addTrackingArea:[NSTrackingArea.alloc initWithRect:CGRectZero options:options owner:self userInfo:nil]];
 }
 
-- (CGSize)viewSizeInPixels;
+- (CGIntegerSize)viewSizeInPixels;
 {
-    return CGSizeScale(self.bounds.size, NSScreen.mainScreen.backingScaleFactor * kAntiAliasingMultiplier);
+    CGSize newSize = CGSizeScale(self.bounds.size, NSScreen.mainScreen.backingScaleFactor * self.renderingScale);
+    CGIntegerSize finalSize;
+    finalSize.width = newSize.width;
+    finalSize.height = newSize.height;
+    return finalSize;
 }
 
 - (void)generateFractal;
 {
     NSDate *startTime = NSDate.new;
     size_t pixelCount = self.viewSizeInPixels.width * self.viewSizeInPixels.height;
-    CGContextRef imageContext = CGBitmapContext32BitCreate(self.viewSizeInPixels);
+    CGContextRef imageContext = CGBitmapContext32BitCreate(CGSizeMake(self.viewSizeInPixels.width, self.viewSizeInPixels.height));
     UInt32 *imagePixelData = CGBitmapContextGetData(imageContext);
     cl_ndrange range = (cl_ndrange){ 2, // work_dim
         {0, 0, 0}, // global_work_offset
@@ -95,6 +99,9 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
     CGContextRelease(imageContext);
     
     self.layer.contents = (__bridge id)fractalImageRef;
+    self.layer.contentsGravity = kCAGravityResize;
+    self.layer.minificationFilter = kCAFilterTrilinear;
+    self.layer.magnificationFilter = kCAFilterNearest;
     CGImageRelease(fractalImageRef);
     self.lastFrameTime = -[startTime timeIntervalSinceNow];
 }

@@ -9,6 +9,7 @@
 @property (weak) IBOutlet NSTextField *juliaLabel;
 @property (weak) IBOutlet NSPopUpButton *colorizationPopUp;
 @property (weak) IBOutlet NSPopUpButton *devicePopUp;
+@property (weak) IBOutlet NSSlider *scaleSlider;
 @end
 
 @implementation ViewController
@@ -18,6 +19,14 @@
     [super viewWillAppear];
     [self.devicePopUp removeAllItems];
     [self.devicePopUp addItemsWithTitles:self.mandlView.availableDeviceNames];
+}
+
+- (IBAction)scaleSliderSlid:(NSSlider *)sender;
+{
+    self.mandlView.renderingScale =
+    self.juliaView.renderingScale = sender.floatValue;
+    [self.mandlView layout];
+    [self.juliaView layout];
 }
 
 - (IBAction)sliderSlid:(id)sender;

@@ -759,7 +759,7 @@
                                 </connections>
                             </slider>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97d-Qg-lGz">
-                                <rect key="frame" x="32" y="16" width="311" height="25"/>
+                                <rect key="frame" x="32" y="40" width="311" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Rainboo?" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="TSk-D3-Jet" id="MOm-zB-9Nq">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -780,7 +780,7 @@
                                 </connections>
                             </popUpButton>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acn-uL-y46">
-                                <rect key="frame" x="32" y="44" width="311" height="25"/>
+                                <rect key="frame" x="32" y="68" width="311" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="GPU" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="vpT-mU-k9K" id="NjO-PK-KxF">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -796,6 +796,14 @@
                                     <action selector="devicePopUpChanged:" target="XfG-lQ-9wD" id="8cU-wI-yL5"/>
                                 </connections>
                             </popUpButton>
+                            <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fq5-h2-eXX">
+                                <rect key="frame" x="33" y="18" width="308" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="4" doubleValue="1" tickMarkPosition="above" sliderType="linear" id="oXc-XE-fF8"/>
+                                <connections>
+                                    <action selector="scaleSliderSlid:" target="XfG-lQ-9wD" id="NMd-zN-ETM"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <constraints>
                             <constraint firstItem="lnx-te-E2N" firstAttribute="trailing" secondItem="53g-LT-psK" secondAttribute="trailing" constant="-8" id="07t-Xk-gQT"/>
@@ -821,6 +829,7 @@
                         <outlet property="juliaView" destination="53g-LT-psK" id="lWw-2K-WiW"/>
                         <outlet property="mandelbrotLabel" destination="Q6R-c4-hww" id="HCa-NN-f8h"/>
                         <outlet property="mandlView" destination="Z01-qI-Jng" id="PVh-YF-Axs"/>
+                        <outlet property="scaleSlider" destination="Fq5-h2-eXX" id="Krt-ne-xBp"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
