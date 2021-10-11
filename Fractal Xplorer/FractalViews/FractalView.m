@@ -15,7 +15,7 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
 - (instancetype)initWithCoder:(NSCoder *)coder;
 {
     if (!(self = [super initWithCoder:coder])) { return nil; }
-    self.renderingScale = 0.5;
+    self.renderingScale = 1;
     [self selectDeviceAtIndex:0];
     if (!self.renderQueue) { return nil; }
     self.renderTimes = NSMutableArray.new;
@@ -27,6 +27,8 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
     [self collectDevices];
     return self;
 }
+
+- (BOOL)isOpaque; { return YES; }
 
 - (CGFloatComplex)complexForPoint:(CGPoint)point;
 {
@@ -97,10 +99,11 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
     });
     CGImageRef fractalImageRef = CGBitmapContextCreateImage(imageContext);
     CGContextRelease(imageContext);
-    
+
     self.layer.contents = (__bridge id)fractalImageRef;
-    self.layer.contentsGravity = kCAGravityResize;
-    self.layer.minificationFilter = kCAFilterTrilinear;
+    [self.layer setOpaque:YES];
+//    self.layer.contentsGravity = kCAGravityResize;
+    self.layer.minificationFilter = kCAFilterNearest;
     self.layer.magnificationFilter = kCAFilterNearest;
     CGImageRelease(fractalImageRef);
     self.lastFrameTime = -[startTime timeIntervalSinceNow];
