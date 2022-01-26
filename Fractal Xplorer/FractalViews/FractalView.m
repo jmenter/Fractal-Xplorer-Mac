@@ -1,7 +1,6 @@
 
 #import "FractalView.h"
 #import "Fractal.cl.h"
-#import <OpenCL/OpenCL.h>
 
 @interface FractalView ()
 @property (nonatomic) NSTimeInterval lastFrameTime;
@@ -144,17 +143,17 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
         [NSCursor.openHandCursor push];
     }
 
-    [self.mouseEventDelegate mouseEvent:theEvent view:self];
+    [self.mouseEventDelegate handleMouseEvent:theEvent inView:self];
 }
 
 - (void)mouseDown:(NSEvent *)theEvent
 {
-    [self.mouseEventDelegate mouseEvent:theEvent view:self];
+    [self.mouseEventDelegate handleMouseEvent:theEvent inView:self];
 }
 
 - (void)scrollWheel:(NSEvent *)event;
 {
-    [self.mouseEventDelegate mouseEvent:event view:self];
+    [self.mouseEventDelegate handleMouseEvent:event inView:self];
 }
 
 - (void)rightMouseUp:(NSEvent *)event;
@@ -174,13 +173,13 @@ static const CGFloat kBaseScale = 100.f; // i.e.; 1 unit in fractal space equals
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
-    [self.mouseEventDelegate mouseEvent:theEvent view:self];
+    [self.mouseEventDelegate handleMouseEvent:theEvent inView:self];
 }
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
     [NSCursor pop];
-    [self.mouseEventDelegate mouseEvent:theEvent view:self];
+    [self.mouseEventDelegate handleMouseEvent:theEvent inView:self];
 }
 
 - (NSString *)labelText;

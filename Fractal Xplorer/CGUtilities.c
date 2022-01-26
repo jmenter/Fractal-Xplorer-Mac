@@ -31,5 +31,3 @@ CGContextRef CGBitmapContext32BitCreateScaled(CGSize size, CGFloat scale)
 {
     return CGBitmapContext32BitCreate(CGSizeScale(size, scale));
 }
-
-

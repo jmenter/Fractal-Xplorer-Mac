@@ -55,7 +55,7 @@
 }
 
 // process mouse events from either view because those events could affect the configuration of the other view
-- (void)mouseEvent:(NSEvent *)event view:(NSView *)view;
+- (void)handleMouseEvent:(NSEvent *)event inView:(NSView *)view;
 {
     static CGPoint previousMousePosition;
     CGPoint delta = CGPointMake(event.locationInWindow.x - previousMousePosition.x, event.locationInWindow.y - previousMousePosition.y);

@@ -47,9 +47,9 @@ float4 colorizeBlackAndWhite(float orbitCount, float altOrbitCount, int iteratio
 //        return (float4)(1, 1, 1, 1);
 //    }
 
-    float value = 1.0 / orbitCount;
+    float value = 1 / orbitCount;
     value = clamp(value, 0.f, 1.f);
-    float hue = 1.0 / altOrbitCount;
+    float hue = 1.f / altOrbitCount;
     hue = clamp(hue, 0.f, 1.f);
 //    value = 0.5;
 //    float4 argb = (float4)(1, value, value, value);

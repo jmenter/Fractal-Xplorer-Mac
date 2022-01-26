@@ -3,8 +3,14 @@
 #define CGUtilities_h
 
 #include <CoreGraphics/CoreGraphics.h>
+#include <objc/NSObjCRuntime.h>
 
-typedef struct CGFloatComplex {
+typedef struct CG_BOXABLE CGIntegerSize {
+    NSInteger width;
+    NSInteger height;
+} CGIntegerSize;
+
+typedef struct CG_BOXABLE CGFloatComplex {
     CGFloat real;
     CGFloat imaginary;
 } CGFloatComplex;

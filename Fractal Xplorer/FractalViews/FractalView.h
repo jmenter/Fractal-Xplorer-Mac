@@ -3,16 +3,8 @@
 #import <OpenCL/OpenCL.h>
 #import "FractalConfiguration.h"
 
-struct
-CGIntegerSize {
-    NSInteger width;
-    NSInteger height;
-};
-typedef struct CG_BOXABLE CGIntegerSize CGIntegerSize;
-
-
 @protocol MouseEventDelegate <NSObject>
-- (void)mouseEvent:(NSEvent *)event view:(NSView *)view;
+- (void)handleMouseEvent:(NSEvent *)event inView:(NSView *)view;
 @end
 
 @interface FractalView : NSView <FractalConfigurationChangeDelegate>
